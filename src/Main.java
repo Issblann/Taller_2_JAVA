@@ -118,24 +118,6 @@ public class Main {
 
     public static void cuartoPuntoReservasHoteles(){
 
-      /*  // Crear un hotel y agregar habitaciones
-        Hotel hotel = new Hotel("Hotel Test", 5);
-
-        // Crear una instancia de la clase Reserva
-        Reserva reserva = new Reserva();
-
-        // Crear un cliente para la reserva
-        Cliente cliente = new Cliente("Juan Perez", "123456789", 1234567890, "Empresa XYZ");
-
-        // Realizar una reserva
-        boolean exitoReserva = reserva.realizarReserva(hotel, 1, cliente);
-
-        if (exitoReserva) {
-            System.out.println("Reserva realizada con éxito");
-        } else {
-            System.out.println("No se pudo realizar la reserva");
-        } */
-
         Scanner scanner = new Scanner(System.in);
         Reserva reserva = new Reserva();
         List<Hotel> hoteles = new ArrayList<>();
