@@ -118,6 +118,24 @@ public class Main {
 
     public static void cuartoPuntoReservasHoteles(){
 
+      /*  // Crear un hotel y agregar habitaciones
+        Hotel hotel = new Hotel("Hotel Test", 5);
+
+        // Crear una instancia de la clase Reserva
+        Reserva reserva = new Reserva();
+
+        // Crear un cliente para la reserva
+        Cliente cliente = new Cliente("Juan Perez", "123456789", 1234567890, "Empresa XYZ");
+
+        // Realizar una reserva
+        boolean exitoReserva = reserva.realizarReserva(hotel, 1, cliente);
+
+        if (exitoReserva) {
+            System.out.println("Reserva realizada con éxito");
+        } else {
+            System.out.println("No se pudo realizar la reserva");
+        } */
+
         Scanner scanner = new Scanner(System.in);
         Reserva reserva = new Reserva();
         List<Hotel> hoteles = new ArrayList<>();
@@ -173,7 +191,7 @@ public class Main {
 
                     if (opcionHabitacion >= 1 && opcionHabitacion <= habitacionesDisponibles.size()) {
 
-                        Habitacion habitacionSeleccionada = habitacionesDisponibles.get(opcionHabitacion );
+                        Habitacion habitacionSeleccionada = habitacionesDisponibles.get(opcionHabitacion - 1 );
 
                         if (habitacionSeleccionada.estaDisponible()) {
                             boolean exitoReserva = reserva.realizarReserva(hotelSeleccionado, opcionHabitacion, cliente);
@@ -195,19 +213,39 @@ public class Main {
                         }
                     }
 
-
-
-
                 }
             }
 
             else if(opcion == 2){
-                System.out.println("Aqui va el segundo punto ");
+                System.out.println("Seleccione un hotel: ");
+                for (int i = 0; i<hoteles.size(); i++){
+                    System.out.println((i+1) + ". " + hoteles.get(i).getNombre());
+                }
+
+                int opcionHotel = scanner.nextInt();
+                Hotel hotelSeleccionado = hoteles.get(opcionHotel - 1);
+
+                System.out.println("Habitaciones reservadas en " + hotelSeleccionado.getNombre() + ": ");
+                List<Habitacion> habitacionesReservadas = reserva.getHabitacionesReservadas(hotelSeleccionado);
+
+                for (Habitacion habitacion : habitacionesReservadas) {
+                    System.out.println("Habitación " + habitacion.getNumHabitacion());
+                }
+
+                System.out.println("Seleccione una habitación a cancelar:");
+                int opcionCancelar = scanner.nextInt();
+
+                if (opcionCancelar >= 1 && opcionCancelar <= habitacionesReservadas.size()) {
+                    if (reserva.cancelarReserva(hotelSeleccionado, opcionCancelar)) {
+                        System.out.println("Reserva cancelada con éxito.");
+                    } else {
+                        System.out.println("No se pudo cancelar la reserva. La habitación no está reservada.");
+                    }
+                }
             }
             else{
                 System.out.println("Opcion invalida");
             }
         }
     }
-
-};
+}

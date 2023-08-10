@@ -30,7 +30,7 @@ public class Habitacion {
 
     public void desocupar(){
         ocupante = null;
-        disponible = false;
+        disponible = true;
 
     }
 }
